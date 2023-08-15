@@ -6,6 +6,7 @@
     "strict": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
     "resolveJsonModule": true
   },
   "include": ["./scripts", "./test", "./typechain", "test/deploy.ts"],

@@ -1,28 +1,29 @@
 // import * as dotenv from "dotenv";
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomiclabs/hardhat-etherscan";
-import "@typechain/hardhat";
-import "@nomiclabs/hardhat-ethers";
-import "@nomiclabs/hardhat-waffle";
-import "hardhat-gas-reporter";
-import "solidity-coverage";
-import "hardhat-contract-sizer";
-import "solidity-coverage";
+import {HardhatUserConfig} from 'hardhat/config';
+import '@nomiclabs/hardhat-etherscan';
+import '@typechain/hardhat';
+import '@nomiclabs/hardhat-ethers';
+import '@nomiclabs/hardhat-waffle';
+import 'hardhat-gas-reporter';
+import 'solidity-coverage';
+import 'hardhat-contract-sizer';
+import 'solidity-coverage';
+import * as dotenv from 'dotenv';
 
-const dummyPrivateKey =
-  "1111111111111111111111111111111111111111111111111111111111111111";
+const dummyPrivateKey = '1111111111111111111111111111111111111111111111111111111111111111';
+dotenv.config();
 
 const config: HardhatUserConfig = {
   paths: {
-    sources: "./contracts",
-    tests: "./test",
-    artifacts: "./build/artifacts",
-    cache: "./build/cache",
+    sources: './contracts',
+    tests: './test',
+    artifacts: './build/artifacts',
+    cache: './build/cache',
   },
   solidity: {
     compilers: [
       {
-        version: "0.8.17",
+        version: '0.8.17',
         settings: {
           optimizer: {
             enabled: true,
@@ -43,27 +44,23 @@ const config: HardhatUserConfig = {
       accounts: [
         {
           privateKey: `${process.env.PRIVATE_KEY}`,
-          balance: "1000000000000000000000000000000000000",
+          balance: '1000000000000000000000000000000000000',
         },
         {
-          privateKey:
-            "0xca3547a47684862274b476b689f951fad53219fbde79f66c9394e30f1f0b4904",
-          balance: "1000000000000000000000000000000000000",
+          privateKey: '0xca3547a47684862274b476b689f951fad53219fbde79f66c9394e30f1f0b4904',
+          balance: '1000000000000000000000000000000000000',
         },
         {
-          privateKey:
-            "0x4bad9ef34aa208258e3d5723700f38a7e10a6bca6af78398da61e534be792ea8",
-          balance: "1000000000000000000000000000000000000",
+          privateKey: '0x4bad9ef34aa208258e3d5723700f38a7e10a6bca6af78398da61e534be792ea8',
+          balance: '1000000000000000000000000000000000000',
         },
         {
-          privateKey:
-            "0xffc03a3bd5f36131164ad24616d6cde59a0cfef48235dd8b06529fc0e7d91f7c",
-          balance: "1000000000000000000000000000000000000",
+          privateKey: '0xffc03a3bd5f36131164ad24616d6cde59a0cfef48235dd8b06529fc0e7d91f7c',
+          balance: '1000000000000000000000000000000000000',
         },
         {
-          privateKey:
-            "0x380c430a9b8fa9cce5524626d25a942fab0f26801d30bfd41d752be9ba74bd98",
-          balance: "1000000000000000000000000000000000000",
+          privateKey: '0x380c430a9b8fa9cce5524626d25a942fab0f26801d30bfd41d752be9ba74bd98',
+          balance: '1000000000000000000000000000000000000',
         },
       ],
       allowUnlimitedContractSize: true,
@@ -72,9 +69,9 @@ const config: HardhatUserConfig = {
       loggingEnabled: false,
     },
     mantle_testnet: {
-      url: "https://rpc.testnet.mantle.xyz",
+      url: 'https://rpc.testnet.mantle.xyz',
       accounts: [`${process.env.PRIVATE_KEY || dummyPrivateKey}`],
-      gasPrice: 30 * 1000000000,
+      gasPrice: 1,
       timeout: 200000,
     },
     avax: {
@@ -103,11 +100,11 @@ const config: HardhatUserConfig = {
     },
   },
   typechain: {
-    target: "ethers-v5",
+    target: 'ethers-v5',
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
-    currency: "USD",
+    currency: 'USD',
   },
   mocha: {
     timeout: 500000,
@@ -117,13 +114,24 @@ const config: HardhatUserConfig = {
     // Obtain one at https://etherscan.io/
     // apiKey: process.env.SNOWTRACE_KEY,
     apiKey: {
-      rinkeby: process.env.ETHERSCAN_API_KEY || "",
-      goerli: process.env.ETHERSCAN_API_KEY || "",
-      sepolia: process.env.ETHERSCAN_API_KEY || "",
-      bsc: process.env.BSCSCAN_API_KEY || "",
-      bscTestnet: process.env.BSCSCAN_API_KEY || "",
-      polygon: process.env.POLYGONSCAN_API_KEY || "",
+      rinkeby: process.env.ETHERSCAN_API_KEY || '',
+      goerli: process.env.ETHERSCAN_API_KEY || '',
+      sepolia: process.env.ETHERSCAN_API_KEY || '',
+      bsc: process.env.BSCSCAN_API_KEY || '',
+      bscTestnet: process.env.BSCSCAN_API_KEY || '',
+      polygon: process.env.POLYGONSCAN_API_KEY || '',
+      mantle_testnet: process.env.MANTLE_API_KEY || '',
     },
+    customChains: [
+      {
+        network: 'mantle_testnet',
+        chainId: 5001,
+        urls: {
+          apiURL: 'https://explorer.testnet.mantle.xyz/api',
+          browserURL: 'https://explorer.testnet.mantle.xyz',
+        },
+      },
+    ],
   },
 };
 

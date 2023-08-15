@@ -6,9 +6,12 @@ typechain
 typechain-types
 
 # Hardhat files
+bin
+build
 cache
 artifacts
 node_modules
+dist
 
 node_modules
 .env
@@ -21,3 +24,4 @@ typechain-types
 cache
 artifacts
 
+.DS_Store
