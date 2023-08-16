@@ -1,8 +1,7 @@
-import hre, {ethers} from 'hardhat';
+import hre from 'hardhat';
 
-// Deployment Helpers:
 import {deploy} from '../../utils/contract';
-// ABI
+
 import {HelloWorld} from '../../typechain-types';
 
 async function main() {
@@ -10,8 +9,7 @@ async function main() {
 
   const helloWorld = await deploy<HelloWorld>(deployer, 'HelloWorld', [], true);
   const address = helloWorld.address;
-  console.log('Address', address);
-  //   console.log('Latest Token Id', latestTokenId);
+  console.log('Address:', address);
 }
 
 main()

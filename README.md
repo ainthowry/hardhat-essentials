@@ -1,4 +1,4 @@
-# hardhat-essentials
+# Hardhat Essential Utils
 
 Trying out hardhat &amp; Building essential functions
 
