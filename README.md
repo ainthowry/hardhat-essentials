@@ -1,6 +1,10 @@
-# Hardhat Essential Utils
+# Hardhat Essentials & Building a mini option market
 
-Trying out hardhat &amp; Building essential functions
+Building essential helper functions and a general template for deployment and interaction with contracts.
+
+Also created a miniturized version of option markets inspired by Lyra Finance found in `contracts/core` and `contracts/interfaces` folders.
+
+Additional sample contracts can be found in the `contracts/samples` folder.
 
 ## Installation
 
@@ -33,7 +37,7 @@ yarn deploy --network mantle_testnet ./scripts/deploy/hello-world.ts
 
 ```bash
 yarn verify --network <network-name> <contract-address>
-#will run
+#runs the following
 yarn hardhat verify --network <network-name> <contract-address>
 
 #e.g

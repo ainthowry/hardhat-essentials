@@ -35,6 +35,13 @@ const config: HardhatUserConfig = {
   },
   networks: {
     hardhat: {
+      forking: {
+        enabled: true,
+        url: process.env.MAINNET_RPC_URL,
+        blockNumber: 18099390,
+      },
+      loggingEnabled: true,
+      chainId: 1,
       // 5 accounts with 10^14 ETH each
       // Addresses:
       //   0x6824c889f6EbBA8Dac4Dd4289746FCFaC772Ea56
